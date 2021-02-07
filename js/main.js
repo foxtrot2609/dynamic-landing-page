@@ -6,35 +6,31 @@ const time = document.getElementById("time"),
   focus = document.getElementById("focus");
 
 // Show time
-function showTime() {
+let showTime = () => {
   let today = new Date(),
     hour = today.getHours(),
     min = today.getMinutes(),
     sec = today.getSeconds();
-
   // Set AM or PM
   const amPm = hour >= 12 ? "PM" : "AM";
-
   // 12hr Format
   hour = hour % 12 || 12;
-
   // Output Time
   time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
     sec
   )} ${amPm}`;
   setTimeout(showTime, 1000);
-}
+};
 
-// Add Zeros
-function addZero(n) {
+// Add Zero
+let addZero = (n) => {
   return (parseInt(n) < 10 ? "0" : "") + n;
-}
+};
 
 // Set Background and Greeting
-function setBgGreet() {
+let setBgGreet = () => {
   let today = new Date(),
     hour = today.getHours();
-
   if (hour < 12) {
     // Morning
     document.body.style.backgroundImage = "url('img/morning.jpg')";
@@ -49,19 +45,19 @@ function setBgGreet() {
     greeting.textContent = "Good Evening";
     document.body.style.color = "white";
   }
-}
+};
 
 // Get Name
-function getName() {
+let getName = () => {
   if (localStorage.getItem("name") === null) {
     myName.textContent = "[Enter Name]";
   } else {
     myName.textContent = localStorage.getItem("name");
   }
-}
+};
 
 // Set Name
-function setName(e) {
+let setName = (e) => {
   if (e.type === "keypress") {
     // Make sure enter is pressed
     if (e.which === 13 || e.keyCode === 13) {
@@ -71,19 +67,19 @@ function setName(e) {
   } else {
     localStorage.setItem("name", e.target.innerText);
   }
-}
+};
 
 // Get Focus
-function getFocus() {
+let getFocus = () => {
   if (localStorage.getItem("focus") === null) {
     focus.textContent = "[Enter Focus]";
   } else {
     focus.textContent = localStorage.getItem("focus");
   }
-}
+};
 
 // Set Focus
-function setFocus(e) {
+let setFocus = (e) => {
   if (e.type === "keypress") {
     // Make sure enter is pressed
     if (e.which === 13 || e.keyCode === 13) {
@@ -93,7 +89,7 @@ function setFocus(e) {
   } else {
     localStorage.setItem("focus", e.target.innerText);
   }
-}
+};
 
 myName.addEventListener("blur", setName);
 myName.addEventListener("keypress", setName);
