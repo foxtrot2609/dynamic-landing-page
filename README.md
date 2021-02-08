@@ -1,2 +1,4 @@
 # dynamic-landing-page
-HTML, CSS, JS
+HTML5, CSS3, JS
+
+
