@@ -1,12 +1,11 @@
 // DOM elements
-
-const time = document.getElementById("time"),
-  greeting = document.getElementById("greeting"),
-  myName = document.getElementById("name"),
-  focus = document.getElementById("focus");
+const time = document.getElementById("time");
+const greeting = document.getElementById("greeting");
+const myName = document.getElementById("name");
+const focus = document.getElementById("focus");
 
 // Show time
-let showTime = () => {
+const showTime = () => {
   let today = new Date(),
     hour = today.getHours(),
     min = today.getMinutes(),
@@ -23,41 +22,39 @@ let showTime = () => {
 };
 
 // Add Zero
-let addZero = (n) => {
+const addZero = (n) => {
   return (parseInt(n) < 10 ? "0" : "") + n;
 };
 
 // Set Background and Greeting
-let setBgGreet = () => {
+const setBgGreet = () => {
   let today = new Date(),
     hour = today.getHours();
   if (hour < 12) {
     // Morning
     document.body.style.backgroundImage = "url('img/morning.jpg')";
-    greeting.textContent = "Good Morning";
+    greeting.textContent = "Good Morning,";
   } else if (hour < 18) {
     // Afternoon
     document.body.style.backgroundImage = "url('img/afternoon.jpg')";
-    greeting.textContent = "Good Afternoon";
+    greeting.textContent = "Good Afternoon,";
   } else {
     // Night
     document.body.style.backgroundImage = "url('img/night.jpg')";
-    greeting.textContent = "Good Evening";
+    greeting.textContent = "Good Evening,";
     document.body.style.color = "white";
   }
 };
 
 // Get Name
-let getName = () => {
-  if (localStorage.getItem("name") === null) {
-    myName.textContent = "[Enter Name]";
-  } else {
-    myName.textContent = localStorage.getItem("name");
-  }
+const getName = () => {
+  localStorage.getItem("name") === null
+    ? (myName.textContent = "[Enter Name]")
+    : (myName.textContent = localStorage.getItem("name"));
 };
 
 // Set Name
-let setName = (e) => {
+const setName = (e) => {
   if (e.type === "keypress") {
     // Make sure enter is pressed
     if (e.which === 13 || e.keyCode === 13) {
@@ -70,7 +67,7 @@ let setName = (e) => {
 };
 
 // Get Focus
-let getFocus = () => {
+const getFocus = () => {
   if (localStorage.getItem("focus") === null) {
     focus.textContent = "[Enter Focus]";
   } else {
@@ -79,7 +76,7 @@ let getFocus = () => {
 };
 
 // Set Focus
-let setFocus = (e) => {
+const setFocus = (e) => {
   if (e.type === "keypress") {
     // Make sure enter is pressed
     if (e.which === 13 || e.keyCode === 13) {
